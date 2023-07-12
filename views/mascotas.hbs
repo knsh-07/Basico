@@ -1,0 +1,40 @@
+<h1>CENTRO MEDICO VETERINARIO BACKEND</h1>
+<h2>LISTADO DE PACIENTES</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Nombre </th>
+            <th>Apellido</th>
+            <th>Cédula</th>
+            <th>Edad </th>
+            <th>Teléfono</th>
+            <th>Opciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each mascotas}}
+        <tr>
+            <form action="/mascotas/actualizar/{{cedula}}" method="post">
+                <td><input id="nombre" name="nombre" value="{{nombre}}" {{../opcion}}></td>
+                <td><input id="apellido" name="apellido" value="{{apellido}}" {{../opcion}}>
+                </td>
+                <td><input id="cedula" value="{{cedula}}" disabled></td>
+                <td><input id="edad" name="edad" value="{{edad}}" {{../opcion}}></td>
+                <td><input id="telefono" name="telefono" value="{{telefono}}" {{../opcion}}></td>
+                <td>
+                {{#if ../estado}}
+                    <a class="eliminar" href="/mascotas/eliminar/{{cedula}}"><img src="/imagenes/eliminar.png"></a>
+                    <a class="editar" href="/mascotas/activar"><img src="/imagenes/editar.png"></a>
+                {{else}}
+                    <input type="submit" value="Enviar">
+                {{/if}}
+                </td>
+            </form>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+<div class="opciones-tabla">
+<a class="volver" href="/">Volver</a>
+<a href="/mascotas/agregar-mascota">Agregar paciente</a>
+</div>
